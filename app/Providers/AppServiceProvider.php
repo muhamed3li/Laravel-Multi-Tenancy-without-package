@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Service\TenantService;
 use App\Models\User;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
@@ -14,7 +15,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind('Tenants', function () {
+            return new TenantService();
+        });
     }
 
     /**
@@ -22,6 +25,5 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::controller(HomeController::class)->group(function () {
+//     Route::get('/', 'index');
+// });
 
 
-Route::controller(HomeController::class)->group(function () {
-    Route::get('/', 'index');
+Route::get('/',function(){
+    dd(DB::getDefaultConnection());
 });
